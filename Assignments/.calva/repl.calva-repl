@@ -1,0 +1,236 @@
+; Jacking in...
+; Connecting using "Clojure (projectless)" project type.
+; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Assignments & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.560-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
+; Using host:port kubernetes.docker.internal:63944 ...
+; Hooking up nREPL sessions on port 63944...
+; Connected session: clj, port: 63944
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+"Please see https://calva.io/output/#about-stdout-in-the-repl-window
+about why stdout printed to this file is prepended with `;` to be line comments."
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+3
+clj꞉user꞉> 
+; Evaluating file: assignment_6_linked_list.clj
+nil
+clj꞉user꞉> 
+; Jacking in...
+; Connecting using "Clojure (projectless)" project type.
+; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Assignments & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
+; Using host:port kubernetes.docker.internal:60161 ...
+; Hooking up nREPL sessions on port 60161...
+; Connected session: clj, port: 60161
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+"Please see https://calva.io/output/#about-stdout-in-the-repl-window
+about why stdout printed to this file is prepended with `;` to be line comments."
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+nil
+clj꞉user꞉> 
+
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+38
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 
+; Execution error (ClassCastException) at user/eval10268 (recursion_repl.clj:8).
+; class java.lang.Long cannot be cast to class clojure.lang.IFn (java.lang.Long is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
+; Evaluation of file recursion_repl.clj failed: class java.lang.ClassCastException
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\assignments\recursion_repl.clj:13:1).
+; Unable to resolve symbol: % in this context
+; Evaluation of file recursion_repl.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+40
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+80
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+80
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+10
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+10
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+10
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+10
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (1 4 9 25 64 169 441 1156 3025 7921 20736)
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (1 4 9 25 64 169 441 1156 3025 7921 20736)
+nil
+clj꞉user꞉> 
+; Jacking in...
+; Connecting using "Clojure (projectless)" project type.
+; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Assignments & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
+; Using host:port kubernetes.docker.internal:51966 ...
+; Hooking up nREPL sessions on port 51966...
+; Connected session: clj, port: 51966
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Jacking in...
+; TypeError: Cannot read properties of undefined (reading 'label')
+; Aborting jack-in.
+; Evaluating file: sequence.clj
+; (1 4 9 25 64 169 441 1156 3025 7921 20736)
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (1 4 9 16 25 36 49 64)
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (1 4 9 16 25 36 49 64)
+; 0
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (1 4 9 16 25 36 49 64)
+; 0
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (1 4 9 16 25 36 49 64)
+; 36
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (1 4 9 16 25 36 49 64)
+; 10
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (1 4 9 16 25 36 49 64)
+; 
+; Execution error (IllegalArgumentException) at user/sum-gt-5 (sequence.clj:9).
+; Don't know how to create ISeq from: java.lang.Long
+; Evaluation of file sequence.clj failed: class java.lang.IllegalArgumentException
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (1 4 9 16 25 36 49 64)
+; 10
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (1 4 9 16 25 36 49 64)
+; 21
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (9 144 3025 3600 3721 4900 4 81 2500 2601 10000)
+; 397
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (9 144 3025 3600 3721 4900 4 81 2500 2601 10000)
+; 397
+; 
+; Execution error (IllegalArgumentException) at user/freqs$fn (sequence.clj:15).
+; Key must be integer
+; Evaluation of file sequence.clj failed: class java.lang.IllegalArgumentException
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (9 144 3025 3600 3721 4900 4 81 2500 2601 10000)
+; 397
+; {70 1, 60 1, 55 1, 50 1, 100 1, 61 1, 51 1, 3 1, 12 1, 2 1, 9 1}
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (9 144 3025 3600 3721 4900 4 81 2500 2601 10000)
+; 397
+; {1 2, 2 1, 3 3}
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (9 144 3025 3600 3721 4900 4 81 2500 2601 10000)
+; 397
+; {1 2, 2 1, 3 3}
+; [1 4 9 16 25]
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (9 144 3025 3600 3721 4900 4 81 2500 2601 10000)
+; 397
+; {1 2, 2 1, 3 3}
+; [2 3 4]
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (9 144 3025 3600 3721 4900 4 81 2500 2601 10000)
+; 397
+; {1 2, 2 1, 3 3}
+; [2 3 4]
+; 
+; Execution error (AssertionError) at user/eval10445 (sequence.clj:30).
+; Assert failed: (= (square-of-events xs) [144 3600 4900 4 2500 10000])
+; Evaluation of file sequence.clj failed: class java.lang.AssertionError
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (9 144 3025 3600 3721 4900 4 81 2500 2601 10000)
+; 397
+; {1 2, 2 1, 3 3}
+; [2 3 4]
+nil
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+; (9 144 3025 3600 3721 4900 4 81 2500 2601 10000)
+; 397
+; {1 2, 2 1, 3 3}
+; [2 3 4]
+; 
+; Execution error (AssertionError) at user/eval10503 (sequence.clj:35).
+; Assert failed: (= (square-of-events xs) [9 144 3025 3600 3721 4900 4 81 2500 2601 1100])
+; Evaluation of file sequence.clj failed: class java.lang.AssertionError
+clj꞉user꞉> 
+; Evaluating file: sequence.clj
+nil
+clj꞉user꞉> 
