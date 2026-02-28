@@ -234,3 +234,194 @@ clj꞉user꞉> 
 ; Evaluating file: sequence.clj
 nil
 clj꞉user꞉> 
+; Jacking in...
+; Connecting using "Clojure (projectless)" project type.
+; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Assignments & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
+; Using host:port kubernetes.docker.internal:54489 ...
+; Hooking up nREPL sessions on port 54489...
+; Connected session: clj, port: 54489
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 120
+; 1
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 120
+; 1
+; 0
+; 1
+; 5
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 120
+; 1
+; 0
+; 1
+; 5
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 120
+; 1
+; 
+; Syntax error (IllegalArgumentException) compiling recur at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\assignments\recursion_repl.clj:24:7).
+; Mismatched argument count to recur, expected: 3 args, got: 4
+; Evaluation of file recursion_repl.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 
+; Syntax error (IllegalArgumentException) compiling recur at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\assignments\recursion_repl.clj:24:7).
+; Mismatched argument count to recur, expected: 3 args, got: 4
+; Evaluation of file recursion_repl.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 0
+; 1
+; 1
+; 2
+; 3
+; 5
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 0
+; 1
+; 5
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 0
+; 1
+; 55
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 0
+; 1
+; 55
+; 6765
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 120
+; 1
+; 1
+; 55
+; 6765
+; 6
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 120
+; 1
+; 1
+; 55
+; 6765
+; 24
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 120
+; 1
+; 1
+; 55
+; 6765
+; 6
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 120
+; 1
+; 1
+; 55
+; 6765
+; 6
+; 
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\assignments\recursion_repl.clj:42:7).
+; Unable to resolve symbol: asset in this context
+; Evaluation of file recursion_repl.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 120
+; 1
+; 1
+; 55
+; 6765
+; 6
+; [4 3 2 1]
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 120
+; 1
+; 1
+; 55
+; 6765
+; 6
+; [4 3 2 1]
+; 1101
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 15
+; 21
+; 120
+; 1
+; 1
+; 55
+; 6765
+; 6
+; [4 3 2 1]
+; 1101
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 1101
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 
+; Execution error (AssertionError) at user/eval10557 (recursion_repl.clj:57).
+; Assert failed: (= (to-binary 13) "1101")
+; 1101; Evaluation of file recursion_repl.clj failed: class java.lang.AssertionError
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+nil
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+; 
+; Syntax error reading source at (REPL:42:22).
+; Unmatched delimiter: )
+; Evaluation of file recursion_repl.clj failed: class clojure.lang.ExceptionInfo
+clj꞉user꞉> 
+; Evaluating file: recursion_repl.clj
+nil
+clj꞉user꞉> 
