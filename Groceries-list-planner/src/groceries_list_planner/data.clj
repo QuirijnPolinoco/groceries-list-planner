@@ -1,4 +1,5 @@
-{:id        :meat-pasta
+(def recipes
+{ :meat-pasta {:id        :meat-pasta
  :name      "Meat pasta"
  :servings  2
  :ingredients [{:name "ricattoni pasta" :amount 250 :unit :g :category :grains}
@@ -13,7 +14,7 @@
                {:name "basil" :amount 15 :unit :g :category :spice}
                {:name "grated cheese" :amount 50 :unit :g :category :dairy}]}
 
-{:id        :green-curry
+ :green-curry {:id        :green-curry
  :name      "Green curry"
  :servings  2
  :ingredients [{:name "chicken" :amount 300 :unit :g :category :meat}
@@ -27,7 +28,7 @@
                {:name "green beans" :amount 400 :unit :g :category :vegetable}
                {:name "rice" :amount 200 :unit :g :category :grains}]}
 
-{:id        :tacos
+ :tacos {:id        :tacos
  :name      "tacos"
  :servings  2
  :ingredients [{:name "tortillas" :amount 6 :unit :pcs :category :grains}
@@ -41,7 +42,7 @@
                {:name "coriander" :amount 5 :unit :g :category :spice}
                {:name "grated cheese" :amount 100 :unit :g :category :dairy}]}
 
-{:id        :chicken-orzo
+ :chicken-orzo {:id        :chicken-orzo
  :name      "Chicken orzo"
  :servings  2
  :ingredients [{:name "chicken breasts" :amount 300 :unit :g :category :meat}
@@ -55,7 +56,7 @@
                {:name "pepper" :amount 2 :unit :g :category :spice}
                {:name "parmesan cheese" :amount 40 :unit :g :category :dairy}]}
 
-{:id        :chicken-gnocchi
+ :chicken-gnocchi {:id        :chicken-gnocchi
  :name      "Chicken gnocchi"
  :servings  2
  :ingredients [{:name "chicken thighs" :amount 300 :unit :g :category :meat}
@@ -69,7 +70,7 @@
                {:name "pepper" :amount 2 :unit :g :category :spice}
                {:name "cream" :amount 80 :unit :ml :category :dairy}]}
 
-{:id        :honey-chicken
+ :honey-chicken {:id        :honey-chicken
  :name      "Honey garlic chicken"
  :servings  2
  :ingredients [{:name "chicken thighs" :amount 300 :unit :g :category :meat}
@@ -81,7 +82,7 @@
                {:name "salt" :amount 3 :unit :g :category :spice}
                {:name "pepper" :amount 2 :unit :g :category :spice}]}
 
-{:id        :chicken-pitas
+ :chicken-pitas {:id        :chicken-pitas
  :name      "Chicken pitas"
  :servings  2
  :ingredients [{:name "chicken" :amount 350 :unit :g :category :meat}
@@ -93,4 +94,4 @@
                {:name "olive oil" :amount 15 :unit :ml :category :oil}
                {:name "oregano" :amount 2 :unit :g :category :spice}
                {:name "salt" :amount 4 :unit :g :category :spice}
-               {:name "pepper" :amount 2 :unit :g :category :spice}]}
+               {:name "pepper" :amount 2 :unit :g :category :spice}]}})

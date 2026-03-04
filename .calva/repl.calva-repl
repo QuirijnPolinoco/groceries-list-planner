@@ -1,0 +1,20 @@
+; Jacking in...
+; TypeError: Cannot read properties of undefined (reading 'label')
+; Aborting jack-in.
+; Jacking in...
+; Connecting using "Clojure (projectless)" project type.
+; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
+; Using host:port kubernetes.docker.internal:61052 ...
+; Hooking up nREPL sessions on port 61052...
+; Connected session: clj, port: 61052
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+"Please see https://calva.io/output/#about-stdout-in-the-repl-window
+about why stdout printed to this file is prepended with `;` to be line comments."
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Evaluating file: data.clj
+#'user/recipes
+clj꞉user꞉> 
