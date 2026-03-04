@@ -18,3 +18,70 @@ clj꞉user꞉> 
 ; Evaluating file: data.clj
 #'user/recipes
 clj꞉user꞉> 
+; Jacking in...
+; Connecting using "Clojure (projectless)" project type.
+; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
+; Using host:port kubernetes.docker.internal:62184 ...
+; Hooking up nREPL sessions on port 62184...
+; Connected session: clj, port: 62184
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+user=> (require '[groceries-list-planner.ingredients :as ing]
+               '[groceries-list-planner.recipe :as recipe]
+               '[groceries-list-planner.planning :as planning])
+nil
+
+user=> (def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
+#'user/flat
+
+user=> (count flat)
+70
+
+user=> (take 2 flat)
+({:name "ricattoni pasta" :amount 250.0 ...} {:name "minced beef" :amount 300.0 ...})
+; Syntax error reading source at (REPL:44:45).
+; Map literal must contain an even number of forms
+clj꞉user꞉> 
+user=
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:0:0).
+; Unable to resolve symbol: user= in this context
+clj꞉user꞉> 
+user=>
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:0:0).
+; Unable to resolve symbol: user=> in this context
+clj꞉user꞉> 
+user=> (count flat)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:56:8).
+; Unable to resolve symbol: flat in this context
+clj꞉user꞉> 
+(require '[groceries-list-planner.ingredients :as ing] '[groceries-list-planner.recipe :as recipe] '[groceries-list-planner.planning :as planning])
+nil
+clj꞉user꞉> 
+(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:63:11).
+; No such var: ing/week-plan-ingredients
+clj꞉user꞉> 
+(count flat)
+; Execution error (UnsupportedOperationException) at user/eval10320 (repl.calva-repl:67).
+; count not supported on this type: Unbound
+clj꞉user꞉> 
+(take 2 flat)
+; Error printing return value (IllegalArgumentException) at clojure.lang.RT/seqFrom (RT.java:557).
+; Don't know how to create ISeq from: clojure.lang.Var$Unbound
+clj꞉user꞉> 
+(require '[groceries-list-planner.ingredients :as ing] :reload)
+nil
+clj꞉user꞉> 
+(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
+#'user/flat
+clj꞉user꞉> 
+(count flat)
+69
+clj꞉user꞉> 
+(take 2 flat)
+({:name "ricattoni pasta", :amount 250, :unit :g, :category :grains}
+ {:name "minced beef", :amount 300, :unit :g, :category :meat})
+clj꞉user꞉> 
