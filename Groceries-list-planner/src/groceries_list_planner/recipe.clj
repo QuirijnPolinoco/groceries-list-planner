@@ -1,3 +1,5 @@
+(ns groceries-list-planner.recipe)
+
 (def recipes
 { :meat-pasta {:id        :meat-pasta
  :name      "Meat pasta"
