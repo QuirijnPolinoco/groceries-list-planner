@@ -28,3 +28,9 @@
 ;; Groups ingredients by category
 (defn group-by-category [ingredients]
   (group-by :category ingredients))
+
+;; Creates a shopping list from the week plan and recipes
+(defn shopping-list [recipes week-plan]
+  (->> (week-plan-ingredients recipes week-plan)
+       (aggregate-ingredients)
+       (group-by-category)))

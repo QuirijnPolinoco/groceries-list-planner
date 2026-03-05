@@ -300,3 +300,275 @@ clj꞉user꞉> 
 ; 
 nil
 clj꞉user꞉> 
+(doseq [cat (sort (keys grouped))]
+  (println (str "== " (name cat) " =="))
+  (doseq [i (get grouped cat)]
+    (println (str "  " (:amount i) " " (name (:unit i)) " " (:name i))))
+  (println))
+; == canned ==
+;   240 g green curry paste
+;   1000 ml coconut milk
+;   120 g sun-dried tomatoes
+;   50 g honey
+;   120 g tomato paste
+;   30 g dijon mustard
+;   40 ml soy sauce
+;   1700 ml chicken broth
+;   700 g tomato cubes
+; 
+; == dairy ==
+;   80 g Greek yogurt
+;   200 g grated cheese
+;   160 ml cream
+;   40 g parmesan cheese
+; 
+; == grains ==
+;   200 g orzo pasta
+;   500 g potato gnocchi
+;   250 g ricattoni pasta
+;   600 g rice
+;   4 pcs pita bread
+;   9 pcs tortillas
+; 
+; == meat ==
+;   300 g chicken breasts
+;   750 g minced beef
+;   950 g chicken
+;   900 g chicken thighs
+; 
+; == oil ==
+;   155/2 ml olive oil
+; 
+; == spice ==
+;   2 g oregano
+;   15 g pepper
+;   15 g basil
+;   37 g salt
+;   35/2 g coriander
+; 
+; == vegetable ==
+;   1 pcs tomato
+;   200 g spinach
+;   24 pcs garlic
+;   1 pcs lemon
+;   9/2 pcs onion
+;   1 pcs cucumber
+;   800 g green beans
+; 
+nil
+clj꞉user꞉> 
+(require '[groceries-list-planner.ingredients :as ing] :reload)
+(require '[groceries-list-planner.recipe :as recipe])
+(require '[groceries-list-planner.planning :as planning])
+nil
+clj꞉user꞉> 
+(require '[groceries-list-planner.ingredients :as ing] :reload)
+nil
+clj꞉user꞉> 
+(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
+(def agg (ing/aggregate-ingredients flat))
+(def grouped (ing/group-by-category agg))
+#'user/grouped
+clj꞉user꞉> 
+(doseq [cat (sort (keys grouped))]
+  (println (str "== " (name cat) " =="))
+  (doseq [i (get grouped cat)]
+    (println (str "  " (:amount i) " " (name (:unit i)) " " (:name i))))
+  (println))
+; == canned ==
+;   240 g green curry paste
+;   1000 ml coconut milk
+;   120 g sun-dried tomatoes
+;   50 g honey
+;   120 g tomato paste
+;   30 g dijon mustard
+;   40 ml soy sauce
+;   1700 ml chicken broth
+;   700 g tomato cubes
+; 
+; == dairy ==
+;   80 g Greek yogurt
+;   200 g grated cheese
+;   160 ml cream
+;   40 g parmesan cheese
+; 
+; == grains ==
+;   200 g orzo pasta
+;   500 g potato gnocchi
+;   250 g ricattoni pasta
+;   600 g rice
+;   4 pcs pita bread
+;   9 pcs tortillas
+; 
+; == meat ==
+;   300 g chicken breasts
+;   750 g minced beef
+;   950 g chicken
+;   900 g chicken thighs
+; 
+; == oil ==
+;   155/2 ml olive oil
+; 
+; == spice ==
+;   2 g oregano
+;   15 g pepper
+;   15 g basil
+;   37 g salt
+;   35/2 g coriander
+; 
+; == vegetable ==
+;   1 pcs tomato
+;   200 g spinach
+;   24 pcs garlic
+;   1 pcs lemon
+;   9/2 pcs onion
+;   1 pcs cucumber
+;   800 g green beans
+; 
+nil
+clj꞉user꞉> 
+(require '[groceries-list-planner.core :as core])
+(require '[groceries-list-planner.ingredients :as ing])
+(require '[groceries-list-planner.recipe :as recipe])
+(require '[groceries-list-planner.planning :as planning])
+nil
+clj꞉user꞉> 
+(def grouped (ing/shopping-list recipe/recipes planning/week-plan))
+(core/printing-shopping-list grouped)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:437:1).
+; No such namespace: core
+clj꞉user꞉> 
+(def grouped (ing/shopping-list recipe/recipes planning/week-plan))
+#'user/grouped
+clj꞉user꞉> 
+(core/printing-shopping-list grouped)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:444:1).
+; No such namespace: core
+clj꞉user꞉> 
+(groceries-list-planner.core/printing-shopping-list grouped)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:448:1).
+; No such var: groceries-list-planner.core/printing-shopping-list
+clj꞉user꞉> 
+(require '[groceries-list-planner.core] :reload)
+nil
+clj꞉user꞉> 
+(alias 'core 'groceries-list-planner.core)
+nil
+clj꞉user꞉> 
+(core/printing-shopping-list grouped)
+; == canned ==
+;   240 g green curry paste
+;   1000 ml coconut milk
+;   120 g sun-dried tomatoes
+;   50 g honey
+;   120 g tomato paste
+;   30 g dijon mustard
+;   40 ml soy sauce
+;   1700 ml chicken broth
+;   700 g tomato cubes
+; 
+; == dairy ==
+;   80 g Greek yogurt
+;   200 g grated cheese
+;   160 ml cream
+;   40 g parmesan cheese
+; 
+; == grains ==
+;   200 g orzo pasta
+;   500 g potato gnocchi
+;   250 g ricattoni pasta
+;   600 g rice
+;   4 pcs pita bread
+;   9 pcs tortillas
+; 
+; == meat ==
+;   300 g chicken breasts
+;   750 g minced beef
+;   950 g chicken
+;   900 g chicken thighs
+; 
+; == oil ==
+;   155/2 ml olive oil
+; 
+; == spice ==
+;   2 g oregano
+;   15 g pepper
+;   15 g basil
+;   37 g salt
+;   35/2 g coriander
+; 
+; == vegetable ==
+;   1 pcs tomato
+;   200 g spinach
+;   24 pcs garlic
+;   1 pcs lemon
+;   9/2 pcs onion
+;   1 pcs cucumber
+;   800 g green beans
+; 
+nil
+clj꞉user꞉> 
+; Jacking in...
+
+; Connecting using "Clojure (projectless)" project type.
+; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
+; Using host:port kubernetes.docker.internal:60022 ...
+; Hooking up nREPL sessions on port 60022...
+; Connected session: clj, port: 60022
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+(require '[groceries-list-planner.core :as core] :reload)
+(require '[groceries-list-planner.recipe :as recipe])
+nil
+clj꞉user꞉> 
+(core/recipe-name->id-map recipe/recipes)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:527:1).
+; No such namespace: core
+clj꞉user꞉> 
+(core/print-recipes)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:531:1).
+; No such namespace: core
+clj꞉user꞉> 
+(groceries-list-planner.core/recipe-name->id-map recipe/recipes)
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; groceries-list-planner.core
+clj꞉user꞉> 
+(groceries-list-planner.core/print-recipes)
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; groceries-list-planner.core
+clj꞉user꞉> 
+(require '[groceries-list-planner.core])
+nil
+clj꞉user꞉> 
+(groceries-list-planner.core/recipe-name->id-map groceries-list-planner.recipe/recipes)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:546:1).
+; No such var: groceries-list-planner.core/recipe-name->id-map
+clj꞉user꞉> 
+(ns-publics 'groceries-list-planner.core)
+{}
+clj꞉user꞉> 
+(require 'groceries-list-planner.core :reload)
+nil
+clj꞉user꞉> 
+(require 'groceries-list-planner.core :reload)
+nil
+clj꞉user꞉> 
+(ns-publics 'groceries-list-planner.core)
+{printing-shopping-list #'groceries-list-planner.core/printing-shopping-list,
+ recipe-name->id-map #'groceries-list-planner.core/recipe-name->id-map}
+clj꞉user꞉> 
+(groceries-list-planner.core/recipe-name->id-map groceries-list-planner.recipe/recipes)
+{"meat pasta" :meat-pasta,
+ "green curry" :green-curry,
+ "tacos" :tacos,
+ "chicken orzo" :chicken-orzo,
+ "chicken gnocchi" :chicken-gnocchi,
+ "honey garlic chicken" :honey-chicken,
+ "chicken pitas" :chicken-pitas}
+clj꞉user꞉> 
+(get (groceries-list-planner.core/recipe-name->id-map groceries-list-planner.recipe/recipes) "meat pasta")
+:meat-pasta
+clj꞉user꞉> 
