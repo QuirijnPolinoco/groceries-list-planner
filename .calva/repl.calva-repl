@@ -572,3 +572,17 @@ clj꞉user꞉> 
 (get (groceries-list-planner.core/recipe-name->id-map groceries-list-planner.recipe/recipes) "meat pasta")
 :meat-pasta
 clj꞉user꞉> 
+(require 'groceries-list-planner.core :reload)
+nil
+clj꞉user꞉> 
+(groceries-list-planner.core/print-recipes)
+; Recipes:
+;  - Meat pasta
+;  - Green curry
+;  - tacos
+;  - Chicken orzo
+;  - Chicken gnocchi
+;  - Honey garlic chicken
+;  - Chicken pitas
+nil
+clj꞉user꞉> 

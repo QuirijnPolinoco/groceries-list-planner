@@ -16,3 +16,7 @@
                [(.toLowerCase ^String (:name recipe)) id])
              recipes)))
 
+(defn print-recipes []
+  (println "Recipes:")
+  (doseq [[_ r] recipe/recipes]
+    (println (str " - " (:name r)))))
