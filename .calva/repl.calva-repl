@@ -215,3 +215,88 @@ clj꞉user꞉> 
 (count agg)
 36
 clj꞉user꞉> 
+(require '[groceries-list-planner.ingredients :as ing] :reload)
+(require '[groceries-list-planner.recipe :as recipe])
+(require '[groceries-list-planner.planning :as planning])
+nil
+clj꞉user꞉> 
+(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
+(def agg (ing/aggregate-ingredients flat))
+(def grouped (ing/group-by-category agg))
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:225:14).
+; No such var: ing/group-by-category
+clj꞉user꞉> 
+(doseq [cat (sort (keys grouped))
+        ing (get grouped cat)]
+  (println (str "== " (name cat) " =="))
+  (doseq [i ing]
+    (println (str "  " (:amount i) " " (name (:unit i)) " " (:name i))))
+  (println))
+; Execution error (IllegalArgumentException) at user/eval10460 (repl.calva-repl:229).
+; Don't know how to create ISeq from: clojure.lang.Var$Unbound
+clj꞉user꞉> 
+(require '[groceries-list-planner.ingredients :as ing] :reload)
+nil
+clj꞉user꞉> 
+(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
+(def agg (ing/aggregate-ingredients flat))
+(def grouped (ing/group-by-category agg))
+#'user/grouped
+clj꞉user꞉> 
+(doseq [cat (sort (keys grouped))]
+  (println (str "== " (name cat) " =="))
+  (doseq [i (get grouped cat)]
+    (println (str "  " (:amount i) " " (name (:unit i)) " " (:name i))))
+  (println))
+; == canned ==
+;   240 g green curry paste
+;   1000 ml coconut milk
+;   120 g sun-dried tomatoes
+;   50 g honey
+;   120 g tomato paste
+;   30 g dijon mustard
+;   40 ml soy sauce
+;   1700 ml chicken broth
+;   700 g tomato cubes
+; 
+; == dairy ==
+;   80 g Greek yogurt
+;   200 g grated cheese
+;   160 ml cream
+;   40 g parmesan cheese
+; 
+; == grains ==
+;   200 g orzo pasta
+;   500 g potato gnocchi
+;   250 g ricattoni pasta
+;   600 g rice
+;   4 pcs pita bread
+;   9 pcs tortillas
+; 
+; == meat ==
+;   300 g chicken breasts
+;   750 g minced beef
+;   950 g chicken
+;   900 g chicken thighs
+; 
+; == oil ==
+;   155/2 ml olive oil
+; 
+; == spice ==
+;   2 g oregano
+;   15 g pepper
+;   15 g basil
+;   37 g salt
+;   35/2 g coriander
+; 
+; == vegetable ==
+;   1 pcs tomato
+;   200 g spinach
+;   24 pcs garlic
+;   1 pcs lemon
+;   9/2 pcs onion
+;   1 pcs cucumber
+;   800 g green beans
+; 
+nil
+clj꞉user꞉> 
