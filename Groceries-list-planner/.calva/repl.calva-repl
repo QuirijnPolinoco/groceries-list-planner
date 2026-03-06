@@ -78,3 +78,221 @@ clj꞉user꞉> 
 (groceries-list-planner.core/meal-input "Meat pasta, 5" name->id)
 {:recipe :meat-pasta, :people 5}
 clj꞉user꞉> 
+StackTraceElement->vec; Jacking in...
+; Connecting using "Clojure (projectless)" project type.
+; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
+; Using host:port kubernetes.docker.internal:56099 ...
+; Hooking up nREPL sessions on port 56099...
+; Connected session: clj, port: 56099
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+(start)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:92:1).
+; Unable to resolve symbol: start in this context
+clj꞉user꞉> 
+start
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:0:0).
+; Unable to resolve symbol: start in this context
+clj꞉user꞉> 
+cd Groceries-list-planner
+clj -M
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:0:0).
+; Unable to resolve symbol: -M in this context
+clj꞉user꞉> 
+(groceries-list-planner.core/-main)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:105:1).
+; No such var: groceries-list-planner.core/-main
+clj꞉user꞉> 
+(require '[groceries-list-planner.core])
+nil
+clj꞉user꞉> 
+(groceries-list-planner.core/-main)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:112:1).
+; No such var: groceries-list-planner.core/-main
+clj꞉user꞉> 
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:112:1).
+; No such var: groceries-list-planner.core/-main
+clj꞉user꞉> 
+(core/-main)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:119:1).
+; No such namespace: core
+clj꞉user꞉> 
+(require '[groceries-list-planner.core :as core])
+nil
+clj꞉user꞉> 
+(core/-main)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:126:1).
+; No such var: core/-main
+clj꞉user꞉> 
+(resolve 'groceries-list-planner.core/-main)
+nil
+clj꞉user꞉> 
+(resolve 'groceries-list-planner.core/print-recipes)
+nil
+clj꞉user꞉> 
+(require '[groceries-list-planner.core :as core])
+nil
+clj꞉user꞉> 
+(core/-main)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:139:1).
+; No such var: core/-main
+clj꞉user꞉> 
+; Jacking in...
+; Connecting using "deps.edn" project type.
+; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
+; Using host:port kubernetes.docker.internal:54163 ...
+; Reconnecting: disconnecting existing client for sessions: clj
+; Hooking up nREPL sessions on port 54163...
+; Connected session: clj, port: 54163
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+(require '[groceries-list-planner.core :as core])
+; Syntax error compiling at (groceries_list_planner\core.clj:11:7).
+; No such var: groceries-list-planner.core/print-recipes
+clj꞉user꞉> 
+(core/-main)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:159:1).
+; No such namespace: core
+clj꞉user꞉> 
+(require '[groceries-list-planner.core :as core])
+nil
+clj꞉user꞉> 
+(core/-main)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:166:1).
+; No such var: core/-main
+clj꞉user꞉> 
+(groceries-list-planner.core/-main)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:170:1).
+; No such var: groceries-list-planner.core/-main
+clj꞉user꞉> 
+((resolve 'groceries-list-planner.core/-main))
+; Execution error (NullPointerException) at user/eval9652 (repl.calva-repl:174).
+; Cannot invoke "clojure.lang.IFn.invoke()" because the return value of "clojure.lang.IFn.invoke(Object)" is null
+clj꞉user꞉> 
+(require '[groceries-list-planner.core :as core] :reload)
+nil
+clj꞉user꞉> 
+(core/run)
+; Type 'start' to begin planning your week
+start; Sending interrupt.; Evaluation was interrupted
+clj꞉user꞉> 
+; Execution error (InterruptedException) at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject/await (AbstractQueuedSynchronizer.java:1722).
+; null
+start
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:0:0).
+; Unable to resolve symbol: start in this context
+clj꞉user꞉> 
+'start'
+start'
+clj꞉user꞉> 
+(start)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:194:1).
+; Unable to resolve symbol: start in this context
+clj꞉user꞉> 
+('start')
+; Execution error (ArityException) at user/eval10444 (repl.calva-repl:198).
+; Wrong number of args (0) passed to: clojure.lang.Symbol
+clj꞉user꞉> 
+(require '[groceries-list-planner.core :as core] :reload)
+nil
+clj꞉user꞉> 
+(def input-lines "start
+Meat pasta, 2
+Green curry, 5
+tacos, 3
+Chicken orzo, 2
+Chicken gnocchi, 4
+Honey garlic chicken, 2
+Chicken pitas, 2")
+#'user/input-lines
+clj꞉user꞉> 
+(binding [*in* (java.io.BufferedReader. (java.io.StringReader. input-lines))]
+  (core/run))
+; Type 'start' to begin planning your week
+; Recipes:
+;  - Meat pasta
+;  - Green curry
+;  - tacos
+;  - Chicken orzo
+;  - Chicken gnocchi
+;  - Honey garlic chicken
+;  - Chicken pitas
+; What would you like to eat on Monday and with how many?
+; What would you like to eat on Tuesday and with how many?
+; What would you like to eat on Wednesday and with how many?
+; What would you like to eat on Thursday and with how many?
+; What would you like to eat on Friday and with how many?
+; What would you like to eat on Saturday and with how many?
+; What would you like to eat on Sunday and with how many?
+; Monday: Meat pasta (2 people)
+; Tuesday: Green curry (5 people)
+; Wednesday: tacos (3 people)
+; Thursday: Chicken orzo (2 people)
+; Friday: Chicken gnocchi (4 people)
+; Saturday: Honey garlic chicken (2 people)
+; Sunday: Chicken pitas (2 people)
+; 
+nil
+clj꞉user꞉> 
+'start'
+start'
+clj꞉user꞉> 
+(start)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:246:1).
+; Unable to resolve symbol: start in this context
+clj꞉user꞉> 
+start
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:0:0).
+; Unable to resolve symbol: start in this context
+clj꞉user꞉> 
+Meat pasta, 2
+2
+clj꞉user꞉> 
+Chicken gnocchi, 4
+4
+clj꞉user꞉> 
+(require '[groceries-list-planner.core :as core] :reload)
+
+(def input-lines "start
+Meat pasta, 2
+Green curry, 5
+tacos, 3
+Chicken orzo, 2
+Chicken gnocchi, 4
+Honey garlic chicken, 2
+Chicken pitas, 2")
+
+(binding [*in* (java.io.BufferedReader. (java.io.StringReader. input-lines))]
+  (core/run))
+; Type 'start' to begin planning your week
+; Recipes:
+;  - Meat pasta
+;  - Green curry
+;  - tacos
+;  - Chicken orzo
+;  - Chicken gnocchi
+;  - Honey garlic chicken
+;  - Chicken pitas
+; What would you like to eat on Monday and with how many?
+; What would you like to eat on Tuesday and with how many?
+; What would you like to eat on Wednesday and with how many?
+; What would you like to eat on Thursday and with how many?
+; What would you like to eat on Friday and with how many?
+; What would you like to eat on Saturday and with how many?
+; What would you like to eat on Sunday and with how many?
+; Monday: Meat pasta (2 people)
+; Tuesday: Green curry (5 people)
+; Wednesday: tacos (3 people)
+; Thursday: Chicken orzo (2 people)
+; Friday: Chicken gnocchi (4 people)
+; Saturday: Honey garlic chicken (2 people)
+; Sunday: Chicken pitas (2 people)
+; 
+nil
+clj꞉user꞉> 
