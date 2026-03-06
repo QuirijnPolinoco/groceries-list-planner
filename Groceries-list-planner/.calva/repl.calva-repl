@@ -296,3 +296,68 @@ Chicken pitas, 2")
 ; 
 nil
 clj꞉user꞉> 
+(require '[groceries-list-planner.core :as core] :reload)
+
+(def input-lines "start
+Meat pasta, 2
+Green curry, 5
+tacos, 3
+Chicken orzo, 2
+Chicken gnocchi, 4
+Honey garlic chicken, 2
+Chicken pitas, 2
+yes")
+
+(binding [*in* (java.io.BufferedReader. (java.io.StringReader. input-lines))]
+  (core/run))
+; Type 'start' to begin planning your week
+; Recipes:
+;  - Meat pasta
+;  - Green curry
+;  - tacos
+;  - Chicken orzo
+;  - Chicken gnocchi
+;  - Honey garlic chicken
+;  - Chicken pitas
+; What would you like to eat on Monday and with how many?
+; What would you like to eat on Tuesday and with how many?
+; What would you like to eat on Wednesday and with how many?
+; What would you like to eat on Thursday and with how many?
+; What would you like to eat on Friday and with how many?
+; What would you like to eat on Saturday and with how many?
+; What would you like to eat on Sunday and with how many?
+; Monday: Meat pasta (2 people)
+; Tuesday: Green curry (5 people)
+; Wednesday: tacos (3 people)
+; Thursday: Chicken orzo (2 people)
+; Friday: Chicken gnocchi (4 people)
+; Saturday: Honey garlic chicken (2 people)
+; Sunday: Chicken pitas (2 people)
+; 
+nil
+clj꞉user꞉> 
+yes
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:0:0).
+; Unable to resolve symbol: yes in this context
+clj꞉user꞉> 
+(yes)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:343:1).
+; Unable to resolve symbol: yes in this context
+clj꞉user꞉> 
+(require '[groceries-list-planner.core :as core] :reload)
+nil
+clj꞉user꞉> 
+(core/run)
+; Type 'start' to begin planning your week
+start
+; Sending interrupt.; Evaluation was interrupted
+clj꞉user꞉> 
+; Execution error (InterruptedException) at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject/await (AbstractQueuedSynchronizer.java:1722).
+; null
+'start'
+start'
+clj꞉user꞉> 
+(start)
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:360:1).
+; Unable to resolve symbol: start in this context
+clj꞉user꞉> 

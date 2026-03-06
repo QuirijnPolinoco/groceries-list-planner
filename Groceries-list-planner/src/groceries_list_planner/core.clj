@@ -4,17 +4,35 @@
             [groceries-list-planner.recipe :as recipe]
             [groceries-list-planner.planning :as planning]))
 
-(declare print-recipes recipe-name->id-map collect-week-plan format-week-plan)
+(declare print-recipes recipe-name->id-map collect-week-plan format-week-plan printing-shopping-list)
 
 (defn -main [& _]
   (println "Type 'start' to begin planning your week")
   (let [input (str/trim (read-line))]
     (when (= (str/lower-case input) "start")
       (print-recipes)
-      (let [name->id (recipe-name->id-map recipe/recipes)
-            week-plan (collect-week-plan name->id)]
-        (format-week-plan week-plan recipe/recipes)
-        (println)))))
+      (println)
+      (let [name->id (recipe-name->id-map recipe/recipes)]
+        (letfn [(plan-loop []
+                  (let [week-plan (collect-week-plan name->id)]
+                    (println)
+                    (format-week-plan week-plan recipe/recipes)
+                    (confirm-loop week-plan)))
+                (confirm-loop [week-plan]
+                  (println "Is this correct? (yes/no)")
+                  (let [answer (str/trim (str/lower-case (read-line)))]
+                    (cond
+                      (= answer "yes")
+                      (let [list (ingredients/shopping-list recipe/recipes week-plan)]
+                        (println)
+                        (printing-shopping-list list))
+                      (= answer "no")
+                      (do (println "Let's try again.")
+                          (plan-loop))
+                      :else
+                      (do (println "Please type 'yes' or 'no'.")
+                          (confirm-loop week-plan)))))]
+          (plan-loop))))))
 
 (defn run []
   (-main))
