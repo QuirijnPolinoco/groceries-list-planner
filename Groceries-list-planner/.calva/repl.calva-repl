@@ -1,0 +1,80 @@
+; Jacking in...
+; Connecting using "Clojure (projectless)" project type.
+; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
+; Using host:port kubernetes.docker.internal:64225 ...
+; Hooking up nREPL sessions on port 64225...
+; Connected session: clj, port: 64225
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+"Please see https://calva.io/output/#about-stdout-in-the-repl-window
+about why stdout printed to this file is prepended with `;` to be line comments."
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+(require 'groceries-list-planner.core :reload)
+(require '[groceries-list-planner.recipe :as recipe])
+nil
+clj꞉user꞉> 
+(def name->id (groceries-list-planner.core/recipe-name->id-map recipe/recipes))
+; Syntax error (ClassNotFoundException) compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:19:15).
+; groceries-list-planner.core
+clj꞉user꞉> 
+(groceries-list-planner.core/meal-input "Meat pasta, 5" name->id)
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; groceries-list-planner.core
+clj꞉user꞉> 
+(require 'groceries-list-planner.core)
+nil
+clj꞉user꞉> 
+(def name->id (groceries-list-planner.core/recipe-name->id-map recipe/recipes))
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:30:15).
+; No such var: groceries-list-planner.core/recipe-name->id-map
+clj꞉user꞉> 
+; Jacking in...
+; Connecting using "Clojure (projectless)" project type.
+; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
+; Using host:port kubernetes.docker.internal:50315 ...
+; Hooking up nREPL sessions on port 50315...
+; Connected session: clj, port: 50315
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+(require '[groceries-list-planner.core] :reload)
+(require '[groceries-list-planner.recipe :as recipe])
+(require '[groceries-list-planner.planning :as planning])
+(require '[groceries-list-planner.ingredients :as ing] :reload)
+nil
+clj꞉user꞉> 
+(def name->id (groceries-list-planner.core/recipe-name->id-map recipe/recipes))
+; Syntax error (ClassNotFoundException) compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:51:15).
+; groceries-list-planner.core
+clj꞉user꞉> 
+(groceries-list-planner.core/meal-input "Meat pasta, 5" name->id)
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; groceries-list-planner.core
+clj꞉user꞉> 
+(require '[groceries-list-planner.core] :reload)
+nil
+clj꞉user꞉> 
+(def name->id (groceries-list-planner.core/recipe-name->id-map recipe/recipes))
+; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner\.calva\repl.calva-repl:62:15).
+; No such namespace: recipe
+clj꞉user꞉> 
+(require '[groceries-list-planner.recipe :as recipe])
+nil
+clj꞉user꞉> 
+(groceries-list-planner.core/meal-input "Meat pasta, 5" name->id)
+nil
+clj꞉user꞉> 
+(require '[groceries-list-planner.core] :reload)
+nil
+clj꞉user꞉> 
+(def name->id (groceries-list-planner.core/recipe-name->id-map recipe/recipes))
+#'user/name->id
+clj꞉user꞉> 
+(groceries-list-planner.core/meal-input "Meat pasta, 5" name->id)
+{:recipe :meat-pasta, :people 5}
+clj꞉user꞉> 
