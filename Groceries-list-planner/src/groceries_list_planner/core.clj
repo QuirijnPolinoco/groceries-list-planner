@@ -37,11 +37,17 @@
 (defn run []
   (-main))
 
+(defn format-amount [amount]
+  (let [n (double amount)]
+    (if (== n (long n))
+      (str (long n))
+      (str/replace (format "%.1f" n) "." ","))))
+
 (defn printing-shopping-list [shopping-list]
   (doseq [cat (sort (keys shopping-list))]
     (println (str "== " (name cat) " =="))
     (doseq [i (get shopping-list cat)]
-      (println (str "  " (:amount i) " " (name (:unit i)) " " (:name i))))
+      (println (str "  " (format-amount (:amount i)) " " (name (:unit i)) " " (:name i))))
     (println)))
 
 (defn recipe-name->id-map [recipes]

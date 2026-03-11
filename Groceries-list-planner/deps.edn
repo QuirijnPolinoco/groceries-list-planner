@@ -1,3 +1,4 @@
 {:paths ["src"]
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}}
- :main groceries-list-planner.core}
+ :main groceries-list-planner.core
+ :aliases {:run {:main-opts ["-m" "groceries-list-planner.core"]}}}
