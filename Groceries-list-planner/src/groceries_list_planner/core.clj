@@ -6,26 +6,22 @@
             [groceries-list-planner.recipe :as recipe]
             [groceries-list-planner.planning :as planning]))
 
+;; Forward declarations so these functions can be used before they are defined.
 (declare print-recipes recipe-name->id-map collect-week-plan format-week-plan printing-shopping-list)
 
-;; -main is the entry point used by Clojure when running this application.
+;; Application entry point.
 (defn -main [& _]
   (println "Type 'start' to begin planning your week")
-  ;; This let reads one line from the user and stores the trimmed value in `input`,
-  ;; so we do not have to call `read-line` multiple times.
+  ;; Read one trimmed line from the user.
   (let [input (str/trim (read-line))]
     (when (= (str/lower-case input) "start")
       (print-recipes)
       (println)
-      ;; This let builds a map from recipe names to ids once, and passes it
-      ;; to the rest of the flow so we can look up recipes quickly by name.
+      ;; Build a map from recipe names to ids for quick lookup.
       (let [name->id (recipe-name->id-map recipe/recipes)]
-        ;; letfn defines two local helper functions that can call each other:
-        ;; - plan-loop: asks for the meals for all days and then shows the plan
-        ;; - confirm-loop: asks the user to confirm or redo the plan
+        ;; Local helpers for the main interaction loop.
         (letfn [(plan-loop []
-                  ;; Here we call collect-week-plan to build the plan,
-                  ;; then print it and hand it over to confirm-loop.
+                  ;; Build the week plan, show it, then ask for confirmation.
                   (let [week-plan (collect-week-plan name->id)]
                     (println)
                     (format-week-plan week-plan recipe/recipes)
@@ -46,45 +42,43 @@
                           (confirm-loop week-plan)))))]
           (plan-loop))))))
 
-;; Convenience function so you can start the app from a REPL by calling (run).
+;; Convenience function to start the app from the REPL.
 (defn run []
   (-main))
 
-;; Converts a numeric amount into a string:
-;; whole numbers like 2.0 become "2", others get one decimal and a comma as separator.
+;; Convert a numeric amount into a display string.
 (defn format-amount [amount]
   (let [n (double amount)]
     (if (== n (long n))
       (str (long n))
       (str/replace (format "%.1f" n) "." ","))))
 
-;; Prints the shopping list grouped by category.
-;; Within each category it prints the amount, unit and name for every item.
+;; Print the shopping list grouped by category.
 (defn printing-shopping-list [shopping-list]
+  ;; Loop over all categories.
   (doseq [cat (sort (keys shopping-list))]
     (println (str "== " (name cat) " =="))
+    ;; Loop over all items in the current category.
     (doseq [i (get shopping-list cat)]
       (println (str "  " (format-amount (:amount i)) " " (name (:unit i)) " " (:name i))))
     (println)))
 
-;; Builds a map from lower‑cased recipe names to recipe ids,
-;; so the user can type a name instead of an id.
+;; Build a map from lower‑cased recipe names to recipe ids.
 (defn recipe-name->id-map [recipes]
   (into {}
         (map (fn [[id recipe]]
                [(.toLowerCase ^String (:name recipe)) id])
              recipes)))
 
-;; Prints all available recipes so the user knows what they can choose from.
+;; Print all available recipes.
 (defn print-recipes []
   (println "Recipes:")
   (doseq [[_ r] recipe/recipes]
     (println (str " - " (:name r)))))
 
-;; Tries to turn a raw input line into a meal map.
-;; Expects input in the form "Recipe name, number" and uses name->id to look up the recipe.
-;; Returns nil if the input does not match this format.
+;; Parse a raw input line into a meal map.
 (defn meal-input [input name->id]
+  ;; when-let first binds `parts`; the body is only executed when `parts` is not nil/false.
   (when-let [parts (and input (seq (str/split (str/trim input) #",")))]
     (let [name-part (str/trim (first parts))
           people-part (str/trim (second parts))
@@ -93,8 +87,7 @@
       (when (and recipe-id people (pos? people))
         {:recipe recipe-id :people people}))))
 
-;; Asks the user what they want to eat on each day and with how many people.
-;; Returns a vector of meal maps that include the day, recipe id and number of people.
+;; Ask the user for meals for each day and return a vector of meal maps.
 (defn collect-week-plan
   ([name->id] (collect-week-plan name->id planning/week-days []))
   ([name->id days plan]
@@ -106,16 +99,17 @@
            input (str/trim (read-line))
            meal (meal-input input name->id)]
        (if meal
-         ;; When the input is valid, we add the meal (with the day added)
-         ;; to the plan and continue with the remaining days.
+         ;; Tail-recursive: recur continues with remaining days and updated plan.
          (recur name->id (rest days) (conj plan (assoc meal :day day)))
          (do (println "Invalid input. Use format: Recipe name, number")
+             ;; Tail resursive if invalid
              (recur name->id days plan)))))))
 
-;; Prints a human‑readable overview of the week plan:
-;; one line per meal, with the day, recipe name and number of people.
+;; Print a human‑readable overview of the week plan.
 (defn format-week-plan [week-plan recipes]
+  ;; Loop over all meals in the plan.
   (doseq [meal week-plan]
     (let [day-name (str/capitalize (name (:day meal)))
+          ;; Look up the recipe name by id inside recipes.
           recipe-name (get-in recipes [(:recipe meal) :name])]
       (println (str day-name ": " recipe-name " (" (:people meal) " people)")))))
