@@ -1,5 +1,12 @@
 (ns groceries-list-planner.recipe)
 
+;; Build a map from lower‑cased recipe names to recipe ids.
+(defn recipe-name->id-map [recipes]
+  (into {}
+        (map (fn [[id recipe]]
+               [(.toLowerCase ^String (:name recipe)) id])
+             recipes)))
+
 (def recipes
 { :meat-pasta {:id        :meat-pasta
  :name      "Meat pasta"

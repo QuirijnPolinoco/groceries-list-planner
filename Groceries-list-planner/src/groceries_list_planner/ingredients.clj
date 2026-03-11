@@ -1,4 +1,5 @@
-(ns groceries-list-planner.ingredients)
+(ns groceries-list-planner.ingredients
+  (:require [clojure.string :as str]))
 
 ;; Scale recipe ingredients by number of people.
 (defn scale-ingredients [recipe people]
@@ -41,3 +42,10 @@
   (->> (week-plan-ingredients recipes week-plan)
        (aggregate-ingredients)
        (group-by-category)))
+
+;; Convert a numeric amount into a display string.
+(defn format-amount [amount]
+  (let [n (double amount)]
+    (if (== n (long n))
+      (str (long n))
+      (str/replace (format "%.1f" n) "." ","))))
