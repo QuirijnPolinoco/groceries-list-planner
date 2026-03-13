@@ -1,597 +1,87 @@
+# Testing Document
+
+Student: Quirijn van der Zanden
+Studentnr: 2137625
+Datum: 13 maart, 2026
+Versie: 1
+Docent: Michel Koolwaaij
+Klas: ITA-CNI-A-f 2025
+
 ## White box testing
 
 Voor het witdoostesten heb ik de REPL gebruikt. Door afzonderlijke functies direct in de REPL uit te voeren, kon ik het gedrag van kleine stukjes code controleren, tussenresultaten bekijken en snel verschillende invoerscenario’s proberen zonder de hele applicatie steeds opnieuw te moeten starten. Op deze manier kon ik gericht logische fouten opsporen.
 
-; Jacking in...
-; TypeError: Cannot read properties of undefined (reading 'label')
-; Aborting jack-in.
-; Jacking in...
-; Connecting using "Clojure (projectless)" project type.
-; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
-; Using host:port kubernetes.docker.internal:61052 ...
-; Hooking up nREPL sessions on port 61052...
-; Connected session: clj, port: 61052
-; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
-nil
-clj꞉user꞉> 
-"Please see https://calva.io/output/#about-stdout-in-the-repl-window
-about why stdout printed to this file is prepended with `;` to be line comments."
-clj꞉user꞉> 
-; Jack-in done.
-clj꞉user꞉> 
-; Evaluating file: data.clj
-#'user/recipes
-clj꞉user꞉> 
-; Jacking in...
-; Connecting using "Clojure (projectless)" project type.
-; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
-; Using host:port kubernetes.docker.internal:62184 ...
-; Hooking up nREPL sessions on port 62184...
-; Connected session: clj, port: 62184
-; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
-nil
-clj꞉user꞉> 
-; Jack-in done.
-clj꞉user꞉> 
-user=> (require '[groceries-list-planner.ingredients :as ing]
-               '[groceries-list-planner.recipe :as recipe]
-               '[groceries-list-planner.planning :as planning])
-nil
+### Test 1 – Genereren van de vlakke ingrediëntenlijst
 
-user=> (def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-#'user/flat
+- **Doel**: controleren dat `week-plan-ingredients` alle ingrediënten uit de weekplanning ophaalt.
+- **Relevante functies**: `week-plan-ingredients` in `ingredients.clj`.
+- **REPL-commando’s**:
 
-user=> (count flat)
-70
+```clojure
+(require '[groceries-list-planner.ingredients :as ing]
+         '[groceries-list-planner.recipe :as recipe]
+         '[groceries-list-planner.planning :as planning])
 
-user=> (take 2 flat)
-({:name "ricattoni pasta" :amount 250.0 ...} {:name "minced beef" :amount 300.0 ...})
-; Syntax error reading source at (REPL:44:45).
-; Map literal must contain an even number of forms
-clj꞉user꞉> 
-user=
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:0:0).
-; Unable to resolve symbol: user= in this context
-clj꞉user꞉> 
-user=>
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:0:0).
-; Unable to resolve symbol: user=> in this context
-clj꞉user꞉> 
-user=> (count flat)
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:56:8).
-; Unable to resolve symbol: flat in this context
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] '[groceries-list-planner.recipe :as recipe] '[groceries-list-planner.planning :as planning])
-nil
-clj꞉user꞉> 
 (def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:63:11).
-; No such var: ing/week-plan-ingredients
-clj꞉user꞉> 
-(count flat)
-; Execution error (UnsupportedOperationException) at user/eval10320 (repl.calva-repl:67).
-; count not supported on this type: Unbound
-clj꞉user꞉> 
-(take 2 flat)
-; Error printing return value (IllegalArgumentException) at clojure.lang.RT/seqFrom (RT.java:557).
-; Don't know how to create ISeq from: clojure.lang.Var$Unbound
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-nil
-clj꞉user꞉> 
+(count flat)   ;; in de test: 69 ingrediënten
+(take 2 flat)  ;; voorbeeld van de eerste twee records
+```
+
+### Test 2 – Aggregatie van ingrediënten
+
+- **Doel**: controleren dat dubbele ingrediënten (zelfde naam/unit/categorie) worden samengevoegd.
+- **Relevante functies**: `aggregate-ingredients` in `ingredients.clj`.
+- **REPL-commando’s**:
+
+```clojure
 (def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-#'user/flat
-clj꞉user꞉> 
-(count flat)
-69
-clj꞉user꞉> 
-(take 2 flat)
-({:name "ricattoni pasta", :amount 250, :unit :g, :category :grains}
- {:name "minced beef", :amount 300, :unit :g, :category :meat})
-clj꞉user꞉> 
-; Jacking in...
-; Connecting using "Clojure (projectless)" project type.
-; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
-; Using host:port kubernetes.docker.internal:51468 ...
-; Hooking up nREPL sessions on port 51468...
-; Connected session: clj, port: 51468
-; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
-nil
-clj꞉user꞉> 
-; Jack-in done.
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-(require '[groceries-list-planner.recipe :as recipe])
-(require '[groceries-list-planner.planning :as planning])
-nil
-clj꞉user꞉> 
-(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-(def agg (ing/aggregate-ingredients flat))
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:105:10).
-; No such namespace: ing
-clj꞉user꞉> 
-(count flat)
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:109:1).
-; Unable to resolve symbol: flat in this context
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-; Syntax error macroexpanding clojure.core/let at (groceries_list_planner\ingredients.clj:17:3).
-; [key fn (fn [{:keys [name unit category]}] [name unit category])] - failed: even-number-of-forms? at: [:bindings] spec: :clojure.core.specs.alpha/bindings
-clj꞉user꞉> 
-(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:117:11).
-; No such namespace: ing
-clj꞉user꞉> 
-(count flat)
-; Execution error (UnsupportedOperationException) at user/eval9597 (repl.calva-repl:121).
-; count not supported on this type: Unbound
-clj꞉user꞉> 
-(take 2 flat)
-; Error printing return value (IllegalArgumentException) at clojure.lang.RT/seqFrom (RT.java:557).
-; Don't know how to create ISeq from: clojure.lang.Var$Unbound
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-; Syntax error macroexpanding clojure.core/let at (groceries_list_planner\ingredients.clj:17:3).
-; [key fn (fn [{:keys [name unit category]}] [name unit category])] - failed: even-number-of-forms? at: [:bindings] spec: :clojure.core.specs.alpha/bindings
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-(require '[groceries-list-planner.recipe :as recipe])
-(require '[groceries-list-planner.planning :as planning])
-nil
-clj꞉user꞉> 
-(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-(def agg (ing/aggregate-ingredients flat))
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:139:10).
-; No such namespace: ing
-clj꞉user꞉> 
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:139:10).
-; No such namespace: ing
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-(require '[groceries-list-planner.recipe :as recipe])
-(require '[groceries-list-planner.planning :as planning])
-nil
-clj꞉user꞉> 
-(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-(def agg (ing/aggregate-ingredients flat))
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:152:10).
-; No such namespace: ing
-clj꞉user꞉> 
-(in-ns 'user)
-(alias 'ing 'groceries-list-planner.ingredients)
-nil
-clj꞉user꞉> 
-(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:160:11).
-; No such var: ing/week-plan-ingredients
-clj꞉user꞉> 
-(def agg (ing/aggregate-ingredients flat))
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:164:10).
-; No such var: ing/aggregate-ingredients
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-(require '[groceries-list-planner.recipe :as recipe])
-(require '[groceries-list-planner.planning :as planning])
-nil
-clj꞉user꞉> 
-(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:173:11).
-; No such var: ing/week-plan-ingredients
-clj꞉user꞉> 
-(def agg (ing/aggregate-ingredients flat))
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:177:10).
-; No such var: ing/aggregate-ingredients
-clj꞉user꞉> 
-   (require '[groceries-list-planner.ingredients :as ing] :reload)
-; Syntax error compiling at (groceries_list_planner\ingredients.clj:19:5).
-; Unable to resolve symbol: --> in this context
-clj꞉user꞉> 
-   (def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-   (def agg (ing/aggregate-ingredients flat))
-; Execution error (IllegalStateException) at cider.nrepl.middleware.util.eval/eval-dispatcher$fn (eval.clj:15).
-; Attempting to call unbound fn: #'groceries-list-planner.ingredients/aggregate-ingredients
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-nil
-clj꞉user꞉> 
-(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:193:11).
-; No such namespace: recipe
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-nil
-clj꞉user꞉> 
-(require '[groceries-list-planner.recipe :as recipe])
-nil
-clj꞉user꞉> 
-(require '[groceries-list-planner.planning :as planning])
-nil
-clj꞉user꞉> 
-(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-#'user/flat
-clj꞉user꞉> 
-(def agg (ing/aggregate-ingredients flat))
-#'user/agg
-clj꞉user꞉> 
-(count flat)
-69
-clj꞉user꞉> 
-(count agg)
-36
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-(require '[groceries-list-planner.recipe :as recipe])
-(require '[groceries-list-planner.planning :as planning])
-nil
-clj꞉user꞉> 
-(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-(def agg (ing/aggregate-ingredients flat))
+(def agg  (ing/aggregate-ingredients flat))
+
+(count flat)  ;; 69 voor de vlakke lijst
+(count agg)   ;; 36 na aggregatie
+```
+
+### Test 3 – Groeperen per categorie en boodschappenlijst-print
+
+- **Doel**: controleren dat ingrediënten per supermarkt-categorie gegroepeerd en netjes geprint worden.
+- **Relevante functies**: `group-by-category` en `shopping-list` in `ingredients.clj`,
+  en `printing-shopping-list` in `core.clj`.
+- **REPL-commando’s**:
+
+```clojure
+(def flat    (ing/week-plan-ingredients recipe/recipes planning/week-plan))
+(def agg     (ing/aggregate-ingredients flat))
 (def grouped (ing/group-by-category agg))
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:225:14).
-; No such var: ing/group-by-category
-clj꞉user꞉> 
-(doseq [cat (sort (keys grouped))
-        ing (get grouped cat)]
-  (println (str "== " (name cat) " =="))
-  (doseq [i ing]
-    (println (str "  " (:amount i) " " (name (:unit i)) " " (:name i))))
-  (println))
-; Execution error (IllegalArgumentException) at user/eval10460 (repl.calva-repl:229).
-; Don't know how to create ISeq from: clojure.lang.Var$Unbound
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-nil
-clj꞉user꞉> 
-(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-(def agg (ing/aggregate-ingredients flat))
-(def grouped (ing/group-by-category agg))
-#'user/grouped
-clj꞉user꞉> 
+
 (doseq [cat (sort (keys grouped))]
   (println (str "== " (name cat) " =="))
   (doseq [i (get grouped cat)]
     (println (str "  " (:amount i) " " (name (:unit i)) " " (:name i))))
   (println))
-; == canned ==
-;   240 g green curry paste
-;   1000 ml coconut milk
-;   120 g sun-dried tomatoes
-;   50 g honey
-;   120 g tomato paste
-;   30 g dijon mustard
-;   40 ml soy sauce
-;   1700 ml chicken broth
-;   700 g tomato cubes
-; 
-; == dairy ==
-;   80 g Greek yogurt
-;   200 g grated cheese
-;   160 ml cream
-;   40 g parmesan cheese
-; 
-; == grains ==
-;   200 g orzo pasta
-;   500 g potato gnocchi
-;   250 g ricattoni pasta
-;   600 g rice
-;   4 pcs pita bread
-;   9 pcs tortillas
-; 
-; == meat ==
-;   300 g chicken breasts
-;   750 g minced beef
-;   950 g chicken
-;   900 g chicken thighs
-; 
-; == oil ==
-;   155/2 ml olive oil
-; 
-; == spice ==
-;   2 g oregano
-;   15 g pepper
-;   15 g basil
-;   37 g salt
-;   35/2 g coriander
-; 
-; == vegetable ==
-;   1 pcs tomato
-;   200 g spinach
-;   24 pcs garlic
-;   1 pcs lemon
-;   9/2 pcs onion
-;   1 pcs cucumber
-;   800 g green beans
-; 
-nil
-clj꞉user꞉> 
-(doseq [cat (sort (keys grouped))]
-  (println (str "== " (name cat) " =="))
-  (doseq [i (get grouped cat)]
-    (println (str "  " (:amount i) " " (name (:unit i)) " " (:name i))))
-  (println))
-; == canned ==
-;   240 g green curry paste
-;   1000 ml coconut milk
-;   120 g sun-dried tomatoes
-;   50 g honey
-;   120 g tomato paste
-;   30 g dijon mustard
-;   40 ml soy sauce
-;   1700 ml chicken broth
-;   700 g tomato cubes
-; 
-; == dairy ==
-;   80 g Greek yogurt
-;   200 g grated cheese
-;   160 ml cream
-;   40 g parmesan cheese
-; 
-; == grains ==
-;   200 g orzo pasta
-;   500 g potato gnocchi
-;   250 g ricattoni pasta
-;   600 g rice
-;   4 pcs pita bread
-;   9 pcs tortillas
-; 
-; == meat ==
-;   300 g chicken breasts
-;   750 g minced beef
-;   950 g chicken
-;   900 g chicken thighs
-; 
-; == oil ==
-;   155/2 ml olive oil
-; 
-; == spice ==
-;   2 g oregano
-;   15 g pepper
-;   15 g basil
-;   37 g salt
-;   35/2 g coriander
-; 
-; == vegetable ==
-;   1 pcs tomato
-;   200 g spinach
-;   24 pcs garlic
-;   1 pcs lemon
-;   9/2 pcs onion
-;   1 pcs cucumber
-;   800 g green beans
-; 
-nil
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-(require '[groceries-list-planner.recipe :as recipe])
-(require '[groceries-list-planner.planning :as planning])
-nil
-clj꞉user꞉> 
-(require '[groceries-list-planner.ingredients :as ing] :reload)
-nil
-clj꞉user꞉> 
-(def flat (ing/week-plan-ingredients recipe/recipes planning/week-plan))
-(def agg (ing/aggregate-ingredients flat))
-(def grouped (ing/group-by-category agg))
-#'user/grouped
-clj꞉user꞉> 
-(doseq [cat (sort (keys grouped))]
-  (println (str "== " (name cat) " =="))
-  (doseq [i (get grouped cat)]
-    (println (str "  " (:amount i) " " (name (:unit i)) " " (:name i))))
-  (println))
-; == canned ==
-;   240 g green curry paste
-;   1000 ml coconut milk
-;   120 g sun-dried tomatoes
-;   50 g honey
-;   120 g tomato paste
-;   30 g dijon mustard
-;   40 ml soy sauce
-;   1700 ml chicken broth
-;   700 g tomato cubes
-; 
-; == dairy ==
-;   80 g Greek yogurt
-;   200 g grated cheese
-;   160 ml cream
-;   40 g parmesan cheese
-; 
-; == grains ==
-;   200 g orzo pasta
-;   500 g potato gnocchi
-;   250 g ricattoni pasta
-;   600 g rice
-;   4 pcs pita bread
-;   9 pcs tortillas
-; 
-; == meat ==
-;   300 g chicken breasts
-;   750 g minced beef
-;   950 g chicken
-;   900 g chicken thighs
-; 
-; == oil ==
-;   155/2 ml olive oil
-; 
-; == spice ==
-;   2 g oregano
-;   15 g pepper
-;   15 g basil
-;   37 g salt
-;   35/2 g coriander
-; 
-; == vegetable ==
-;   1 pcs tomato
-;   200 g spinach
-;   24 pcs garlic
-;   1 pcs lemon
-;   9/2 pcs onion
-;   1 pcs cucumber
-;   800 g green beans
-; 
-nil
-clj꞉user꞉> 
-(require '[groceries-list-planner.core :as core])
-(require '[groceries-list-planner.ingredients :as ing])
-(require '[groceries-list-planner.recipe :as recipe])
-(require '[groceries-list-planner.planning :as planning])
-nil
-clj꞉user꞉> 
-(def grouped (ing/shopping-list recipe/recipes planning/week-plan))
-(core/printing-shopping-list grouped)
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:437:1).
-; No such namespace: core
-clj꞉user꞉> 
-(def grouped (ing/shopping-list recipe/recipes planning/week-plan))
-#'user/grouped
-clj꞉user꞉> 
-(core/printing-shopping-list grouped)
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:444:1).
-; No such namespace: core
-clj꞉user꞉> 
-(groceries-list-planner.core/printing-shopping-list grouped)
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:448:1).
-; No such var: groceries-list-planner.core/printing-shopping-list
-clj꞉user꞉> 
-(require '[groceries-list-planner.core] :reload)
-nil
-clj꞉user꞉> 
-(alias 'core 'groceries-list-planner.core)
-nil
-clj꞉user꞉> 
-(core/printing-shopping-list grouped)
-; == canned ==
-;   240 g green curry paste
-;   1000 ml coconut milk
-;   120 g sun-dried tomatoes
-;   50 g honey
-;   120 g tomato paste
-;   30 g dijon mustard
-;   40 ml soy sauce
-;   1700 ml chicken broth
-;   700 g tomato cubes
-; 
-; == dairy ==
-;   80 g Greek yogurt
-;   200 g grated cheese
-;   160 ml cream
-;   40 g parmesan cheese
-; 
-; == grains ==
-;   200 g orzo pasta
-;   500 g potato gnocchi
-;   250 g ricattoni pasta
-;   600 g rice
-;   4 pcs pita bread
-;   9 pcs tortillas
-; 
-; == meat ==
-;   300 g chicken breasts
-;   750 g minced beef
-;   950 g chicken
-;   900 g chicken thighs
-; 
-; == oil ==
-;   155/2 ml olive oil
-; 
-; == spice ==
-;   2 g oregano
-;   15 g pepper
-;   15 g basil
-;   37 g salt
-;   35/2 g coriander
-; 
-; == vegetable ==
-;   1 pcs tomato
-;   200 g spinach
-;   24 pcs garlic
-;   1 pcs lemon
-;   9/2 pcs onion
-;   1 pcs cucumber
-;   800 g green beans
-; 
-nil
-clj꞉user꞉> 
-; Jacking in...
+```
 
-; Connecting using "Clojure (projectless)" project type.
-; Starting Jack-in: pushd c:\Users\quiri\Documents\GitHub\groceries-list-planner\Groceries-list-planner & java -jar "c:\Users\quiri\.cursor\extensions\betterthantomorrow.calva-2.0.563-universal\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,\"1.5.1\"},cider/cider-nrepl {:mvn/version,\"0.58.0\"}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" & popd
-; Using host:port kubernetes.docker.internal:60022 ...
-; Hooking up nREPL sessions on port 60022...
-; Connected session: clj, port: 60022
-; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
-nil
-clj꞉user꞉> 
-; Jack-in done.
-clj꞉user꞉> 
-(require '[groceries-list-planner.core :as core] :reload)
+Dit leverde bijvoorbeeld categorieën op zoals `canned`, `dairy`, `grains`, `meat`, `oil`, `spice` en `vegetable` met daaronder de juiste hoeveelheden (zoals 240 g green curry paste, 1000 ml coconut milk, 750 g minced beef, enzovoort).
+
+### Test 4 – Hulpfuncties in `core.clj`
+
+- **Doel**: controleren dat de hulpfuncties rond recepten correct werken.
+- **Relevante functies**: `recipe-name->id-map` en `print-recipes` in `core.clj`.
+- **REPL-commando’s**:
+
+```clojure
+(require 'groceries-list-planner.core :reload)
 (require '[groceries-list-planner.recipe :as recipe])
-nil
-clj꞉user꞉> 
-(core/recipe-name->id-map recipe/recipes)
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:527:1).
-; No such namespace: core
-clj꞉user꞉> 
-(core/print-recipes)
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:531:1).
-; No such namespace: core
-clj꞉user꞉> 
+
 (groceries-list-planner.core/recipe-name->id-map recipe/recipes)
-; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
-; groceries-list-planner.core
-clj꞉user꞉> 
 (groceries-list-planner.core/print-recipes)
-; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
-; groceries-list-planner.core
-clj꞉user꞉> 
-(require '[groceries-list-planner.core])
-nil
-clj꞉user꞉> 
-(groceries-list-planner.core/recipe-name->id-map groceries-list-planner.recipe/recipes)
-; Syntax error compiling at (c:\Users\quiri\Documents\GitHub\groceries-list-planner\.calva\repl.calva-repl:546:1).
-; No such var: groceries-list-planner.core/recipe-name->id-map
-clj꞉user꞉> 
-(ns-publics 'groceries-list-planner.core)
-{}
-clj꞉user꞉> 
-(require 'groceries-list-planner.core :reload)
-nil
-clj꞉user꞉> 
-(require 'groceries-list-planner.core :reload)
-nil
-clj꞉user꞉> 
-(ns-publics 'groceries-list-planner.core)
-{printing-shopping-list #'groceries-list-planner.core/printing-shopping-list,
- recipe-name->id-map #'groceries-list-planner.core/recipe-name->id-map}
-clj꞉user꞉> 
-(groceries-list-planner.core/recipe-name->id-map groceries-list-planner.recipe/recipes)
-{"meat pasta" :meat-pasta,
- "green curry" :green-curry,
- "tacos" :tacos,
- "chicken orzo" :chicken-orzo,
- "chicken gnocchi" :chicken-gnocchi,
- "honey garlic chicken" :honey-chicken,
- "chicken pitas" :chicken-pitas}
-clj꞉user꞉> 
-(get (groceries-list-planner.core/recipe-name->id-map groceries-list-planner.recipe/recipes) "meat pasta")
-:meat-pasta
-clj꞉user꞉> 
-(require 'groceries-list-planner.core :reload)
-nil
-clj꞉user꞉> 
-(groceries-list-planner.core/print-recipes)
-; Recipes:
-;  - Meat pasta
-;  - Green curry
-;  - tacos
-;  - Chicken orzo
-;  - Chicken gnocchi
-;  - Honey garlic chicken
-;  - Chicken pitas
-nil
-clj꞉user꞉> 
+```
 
+De functie `recipe-name->id-map` gaf een map terug waarin namen zoals `"meat pasta"` naar de juiste keyword-id (bijvoorbeeld `:meat-pasta`) worden vertaald. Met `print-recipes` werd gecontroleerd dat alle recepten netjes als lijst in de console werden weergegeven.
+
+### Ruwe REPL-log (bijlage)
+
+Zie: `.calva/repl.calva-repl` (Tests 1–3) en `Groceries-list-planner/.calva/repl.calva-repl` (Test 4 en extra runs).
 
 ## Black box testing
 
-Voor het Black box testing heeft mijn docent het programma als eindgebruiker via de console uitgeprobeerd. Bij de vraag wat hij op een bepaalde dag wilde eten en voor hoeveel personen, typte hij Green Curry zonder de verwachte komma en het aantal personen (bijvoorbeeld Green Curry, 3). Dit zorgde voor een exception, omdat de invoer niet in het juiste formaat was. Op basis van deze test heb ik de invoerafhandeling aangepast, zodat dit soort foutieve invoer niet meer tot een crash leidt, maar netjes wordt afgewezen en de gebruiker een duidelijke melding krijg
+Voor het Black box testing heeft mijn docent het programma als eindgebruiker via de console uitgeprobeerd. Bij de vraag wat hij op een bepaalde dag wilde eten en voor hoeveel personen, typte hij Green Curry zonder de verwachte komma en het aantal personen (bijvoorbeeld `Green Curry, 3`). Dit zorgde voor een exception, omdat de invoer niet in het juiste formaat was. Op basis van deze test heb ik de invoerafhandeling aangepast, zodat dit soort foutieve invoer niet meer tot een crash leidt, maar netjes wordt afgewezen en de gebruiker een duidelijke melding krijgt.

@@ -1,14 +1,25 @@
 Verslag Paradigma
 
-1. Inleiding
-2. Onderzoek
-3. Challenge
-4. Implementatie
-5. Reflectie
-6. Conclusie
-7. Bronnen
+Student: Quirijn van der Zanden
+Studentnr: 2137625
+Datum: 13 maart, 2026
+Versie: 1
+Docent: Michel Koolwaaij
+Klas: ITA-CNI-A-f 2025
+
+## Inhoudsopgave
+
+- [1. Inleiding](#1-inleiding)
+- [2. Onderzoek](#2-onderzoek)
+- [3. Challenge](#3-challenge)
+- [4. Implementatie](#4-implementatie)
+- [5. Reflectie](#5-reflectie)
+- [6. Conclusie](#6-conclusie)
+- [7. Bronnen](#7-bronnen)
 
 ## 1. Inleiding
+
+Voor deze paradigma-opdracht heb ik onderzocht wat functioneel programmeren inhoudt en hoe ik dit in de praktijk kan toepassen met de taal Clojure. Als casus heb ik een boodschappenplanner gebouwd die op basis van recepten en een ingevoerde weekplanning automatisch een gestructureerde boodschappenlijst genereert. In plaats van te werken met mutabele objecten en veel verborgen state, staat in deze opdracht het denken in datastromen en pure functies centraal. Elke stap transformeert data op een voorspelbare manier. In dit verslag beschrijf ik eerst kort welke functionele concepten ik heb bestudeerd (zoals pure functies, recursie, higher-order functies, immutability en lazy sequences), daarna licht ik de challenge en de implementatie van mijn Clojure-applicatie toe, en sluit ik af met een reflectie op mijn ervaringen en een conclusie over wat ik uit deze opdracht heb geleerd.
 
 ## 2. Onderzoek
 
@@ -86,6 +97,10 @@ De functionele concepten die ik het fijnst vond om mee te werken, zijn recursie,
 Wat meer specifiek bij Clojure hoort, vond ik het ook interessant dat de taal sterk leunt op REPL‑gebaseerde ontwikkeling. Tegelijkertijd had ik daardoor ook praktische struggles: ik merkte dat het opzetten en goed werkend krijgen van terminal input voor de gebruiker lastiger was dan ik had verwacht, mede omdat ik zelf nog niet super ervaren ben met command line tools en de onderliggende tooling rond Clojure en WSL. Door met dit project bezig te zijn, heb ik gemerkt dat ik nog veel kan leren over de terminal en de tooling eromheen, en dat het me juist triggert om me daar in de toekomst verder in te verdiepen zodat ik dit soort functionele projecten nog soepeler kan ontwikkelen en testen.
 
 ## 6. Conclusie
+
+Door te werken met pure functies, immutability, recursie, higher‑order functies en lazy sequences heb ik ervaren hoe krachtig het is om een probleem echt als datastroom te modeleren. Elke stap transformeert de data op een voorspelbare manier, zonder verborgen state. Ik merk dat ik functioneel programmeren mij een goed overzicht geeft. ik vind het fijn om met pure functies te werken, omdat duidelijk is welke input en output een functie heeft en fouten daardoor veel beter te herleiden zijn. 
+
+Hoewel ik in de praktijk nog tegen tooling- en terminalgerelateerde obstakels aanliep, heeft dit project me vooral laten zien dat het functionele paradigma een andere manier is om naar problemen te kijken en deze op te lossen. Deze opdracht gaf mij een duidelijker inzicht in hoe functionele talen werken, vooral rond pure functies, en het gaf mij meer grip op wat dit precies inhoudt en hoe je dit consequent goed toepast.
 
 ## 7. Bronnen
 
