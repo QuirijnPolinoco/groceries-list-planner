@@ -9,13 +9,17 @@
 ;; Parse a raw input line into a meal map.
 (defn meal-input [input name->id]
   ;; when-let first binds `parts`; the body is only executed when `parts` is not nil/false.
-  (when-let [parts (and input (seq (str/split (str/trim input) #",")))]
-    (let [name-part (str/trim (first parts))
-          people-part (str/trim (second parts))
-          recipe-id (get name->id (str/lower-case name-part))
-          people (when people-part (parse-long people-part))]
-      (when (and recipe-id people (pos? people))
-        {:recipe recipe-id :people people}))))
+  ;; We also require at least two comma‑separated parts to avoid NPEs
+  ;; when the user forgets the ", number" part.
+  (when-let [parts (and input
+                        (seq (str/split (str/trim input) #",")))]
+    (when (>= (count parts) 2)
+      (let [name-part (str/trim (first parts))
+            people-part (some-> (second parts) str/trim)
+            recipe-id (get name->id (str/lower-case name-part))
+            people (when people-part (parse-long people-part))]
+        (when (and recipe-id people (pos? people))
+          {:recipe recipe-id :people people})))))
 
 ;; Ask the user for meals for each day and return a vector of meal maps.
 (defn collect-week-plan
