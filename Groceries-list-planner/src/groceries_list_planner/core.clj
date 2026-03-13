@@ -39,10 +39,6 @@
                           (confirm-loop week-plan)))))]
           (plan-loop))))))
 
-;; Convenience function to start the app from the REPL.
-; (defn run []
-;  (-main))
-
 ;; Print the shopping list grouped by category.
 (defn printing-shopping-list [shopping-list]
   ;; Loop over all categories.
